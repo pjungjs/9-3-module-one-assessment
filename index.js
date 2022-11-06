@@ -104,7 +104,24 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  //empty object
+  let obj = {};
+  //to loop through the @movies array of objects
+  for (let movie of movies) {
+    //if there's a key named "rated", update the "obj"
+    if (movie.hasOwnProperty('rated')) {
+      //if there's no key named @movie.rated in "obj", add the key @movie.rated with the value 1 to the "obj". 
+      if (!obj[movie.rated]) {
+        obj[movie.rated] = 1;
+      } else {
+        //if there's key named @movie.rated in "obj", add 1 more
+        obj[movie.rated] += 1;
+      }
+    }
+  }
+  return obj;
+}
 
 /**
  * findById()
