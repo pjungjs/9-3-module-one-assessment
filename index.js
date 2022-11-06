@@ -236,7 +236,26 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  //set the variable "result" with value 0, so I can compare it later
+  let toCompare = 0;
+  //set the variable "movieName" with value null
+  let movieName = null;
+
+  //to loop through the @movies array of objects
+  for (let movie of movies) {
+    //set the variable "num" with @movie.boxOffice string withouth the dollar sign and commas in between the nubmers,
+    //because @movie.boxOffice is a string, for example: "$76,271,832", but I only want the number so I can compare.
+    let num = Number(movie.boxOffice.slice(1).split(',').join(''));
+
+    //if the "num" is greater than "toCompare", update the "toCompare" and "movieName" with @movie.title
+    if (num > toCompare) {
+      toCompare = num;
+      movieName = movie.title;
+    }
+  }
+  return movieName;
+}
 
 // Do not change anything below this line.
 module.exports = {
