@@ -179,7 +179,7 @@ function filterByGenre(movies, genre) {
   for (let movie of movies) {
     //if @movie.genre has @genre, push the copy of the that @movie object to the array @arr
     if (movie.genre.includes(genre)) {
-      arr.push({...movie});
+      arr.push(movie);
     }
   }
   return arr;
@@ -219,7 +219,7 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
     //if "releasedYear" last index, which is the year of the movie released,
     //equal to or less than the given year, push the copy of the that @movie object to the array @arr.
     if (Number(releasedYear[releasedYear.length-1]) <= year) {
-      arr.push({...movie});
+      arr.push(movie);
     }
   }
   return arr;
