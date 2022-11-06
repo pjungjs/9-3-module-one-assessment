@@ -207,7 +207,23 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  //empty array
+  let arr = [];
+  //to loop through the @movies array of objects
+  for (let movie of movies) {
+    //set the variable "releasedYear" array with @movie.released string splitted to each index,
+    //because @movie.released is a string with date, month and year, but I only want the year.
+    let releasedYear = movie.released.split(' ');
+
+    //if "releasedYear" last index, which is the year of the movie released,
+    //equal to or less than the given year, push the copy of the that @movie object to the array @arr.
+    if (Number(releasedYear[releasedYear.length-1]) <= year) {
+      arr.push({...movie});
+    }
+  }
+  return arr;
+}
 
 /**
  * getBiggestBoxOfficeMovie()
